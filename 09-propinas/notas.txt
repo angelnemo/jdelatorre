@@ -14,10 +14,52 @@ TailwindCSS
     en 09-propinas\tailwind.config.js modificar la seccion content
 
     
-
+tipos de datos: crear archivo
 Determinar el tipado del archivo de base de datos en: 09-propinas\src\types\index.ts
+se debe indicar que el tipo de datos tambien en la data
 
-Construir componente MenuItem para la data
+
+Obtener la data en: 09-propinas\src\App.tsx
+Construir componente MenuItem para la data: 09-propinas\src\components\MenuItem.tsx
+en App.tsx mapear el contenido de la data y a traves de props enviarlo a MenuItem
+En cada componente se deben tipar los datos con los que se trabajara
+En la componente se podra ya visualizar los datos: <p>{item.name}</p>
+
+Para el manejo y conversiones de moneda se puede utilizar las funciones de: 09-propinas\src\helpers\index.ts
 
 
-Crear hook para traer la data
+
+Armar la Orden
+--------------
+Se debe crear un arreglo de datos
+Pero primero se debe tener el modelado o tipado de datos de la orden
+Esto esta en 09-propinas/src/types/index.ts (OrderItem)
+Para esto se utilizaran hooks: 09-propinas\src\hooks\useOrder.ts
+
+Crear hook para la orden
+funcion para agregar item a la orden
+entonces desde la componente App.tsx se llama a la funcion addItem(item)
+y desde App.tsx se puede pasar esa funcion mediante Props a la componente MenuItem.tsx
+aqui se puede comprobar ya con el plugin de react para el navegador
+
+Contenido de la orden
+---------------------
+La componente 09-tips\src\components\OrderContent.tsx 
+se envian los datos desde app.tsx a la componente OrderContent, mediante props
+se debe verificar que no se dupliquen los items
+
+
+Propinas
+--------
+Componente: 09-tips\src\components\TipPercetageForm.tsx
+en 09-tips\src\hooks\useOrder.ts se manejara el hook para pasar los datos de propina
+en esta componente se setea el valor de tip, segun se escoja
+
+
+
+Total de la orden
+-----------------
+manejado en: 09-propinas\src\components\OrdetTotals.tsx
+a esta componente se debera enviare desde App.tsx la orden, la propina, 
+y tambien el poder setear a 0 todo (esta funcion ira en 9-tips\src\hooks\useOrder.ts)
+aqui se manejara la orden total, la propina
