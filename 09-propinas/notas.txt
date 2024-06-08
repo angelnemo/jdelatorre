@@ -1,0 +1,23 @@
+PS J:\React\jdelatorre> npm create vite@latest
+seleccionar react 
+variant: Typescript + SWC
+PS J:\React\jdelatorre\09-propinas> npm install (dependencias y core)
+PS J:\React\jdelatorre\09-propinas> npm run dev
+
+
+TailwindCSS
+    Seguir las instrucciones para instalar bajo vite: https://tailwindcss.com/docs/guides/vite
+    PS J:\React\jdelatorre\09-propinas> npm install -D tailwindcss postcss autoprefixer
+    PS J:\React\jdelatorre\09-propinas> npx tailwindcss init -p
+
+    Especificar en que archivos habra codigo de tailwind css:
+    en 09-propinas\tailwind.config.js modificar la seccion content
+
+    
+
+Determinar el tipado del archivo de base de datos en: 09-propinas\src\types\index.ts
+
+Construir componente MenuItem para la data
+
+
+Crear hook para traer la data
