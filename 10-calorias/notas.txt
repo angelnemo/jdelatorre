@@ -1,0 +1,31 @@
+instalar tailwind:
+    PS J:\React\jdelatorre\10-calorias> npm install -D tailwindcss postcss autoprefixer 
+    PS J:\React\jdelatorre\10-calorias> npx tailwindcss init -p
+    configurar el archivo: 10-calorias\tailwind.config.js, con 
+    content: ["./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}"
+    ],
+    configurar archivo: 10-calorias\src\index.css
+
+
+
+Data de archivos: 10-calorias\src\data\categories.ts
+definir types para la data: 10-calorias\src\types\index.ts y referenciar en categoris.ts
+
+
+crear componente: 10-calorias\src\components\Form.tsx
+iterar data de categorias en esta componente
+utilizar hook para manejar la actividad (sera de tipo objeto), 
+con este hook creado ya se puede conectar los datos con los elementos html
+
+
+
+useReducer
+    Se pueden almacenar los datos no solo con useState, sino tambien usando este hook
+    es la alternativa a useState
+    para manejar estados mas complejos que los de useState
+    const [state, dispatch] = useReducer(reducer, initialState)
+    reducer: funcion que toma el estado actual y una accion, y devuelve un nuevo estado
+    initialState: estado inicial del reducer
+
+
