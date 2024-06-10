@@ -1,4 +1,5 @@
 import { categories } from "../data/categories"
+import {v4 as uuidv4} from "uuid"
 import { useState, ChangeEvent, FormEvent, Dispatch } from "react"
 import { Activity } from "../types"
 import { ActivityActions } from "../reducers/activity-reducer"
@@ -10,14 +11,18 @@ type FormProps = {
 
 
 
+const initialState: Activity = {
+    id: uuidv4(),
+    category:1,
+    name:'Pesas',
+    calories: 0
+}
+
+
 const Form = ({dispatch}:FormProps) => {
 
     /* sera un useState generico, para poder manejar la actividad fisica y tambien la comida */
-    const [activity, setActivity] = useState<Activity>({
-        category:1,
-        name:'Pesas',
-        calories: 0
-    })
+    const [activity, setActivity] = useState<Activity>(initialState)
 
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +59,12 @@ const Form = ({dispatch}:FormProps) => {
                 newActivity:activity
             }
         } )
+
+        /* reiniciar formulario */
+        setActivity({
+            ...initialState,
+            id: uuidv4()
+        })
     }
 
 

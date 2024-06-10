@@ -2,12 +2,14 @@ import Form from "./components/Form"
 
 import { useReducer } from "react"
 import { ativityReducer, initialState } from "./reducers/activity-reducer"
+import ActivityList from "./components/ActivityList"
 
 function App() {
   
 
   const[state, dispatch] = useReducer(ativityReducer, initialState)
   /* dispatch sera la que dispare la accion deseada en el momento preciso */
+  // console.log('Actividades: ', state) /* el useReduer ya permite acceder al compendio de datos obtenido */
 
 
   return (
@@ -25,6 +27,14 @@ function App() {
           />
         </div>
         
+      </section>
+
+
+      <section className="p-10 mx-auto max-w-3-4xl" >
+        <ActivityList 
+          activities = {state.activities} /* asi se pasan solo las actividades */
+          dispatch = {dispatch}
+        />
       </section>
 
     </>

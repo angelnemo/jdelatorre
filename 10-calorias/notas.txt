@@ -9,7 +9,15 @@ instalar tailwind:
 
 
 Clonar repositorio
-    Copiarlo en ubicacion, abrirlo 
+    PS D:\Desarrollo\ReactTS> git clone "https://github.com/angelnemo/jdelatorre.git"
+    se recreara(n) los proyectos o proyecto
+    PS D:\Desarrollo\ReactTS> cd .\jdelatorre\
+    
+    Guardar cambios:
+    PS D:\Desarrollo\ReactTS\jdelatorre> git add --all
+    PS D:\Desarrollo\ReactTS\jdelatorre> git commit -m "version 1"
+    PS D:\Desarrollo\ReactTS\jdelatorre> git push   (con esto se suben los cambios al servidor)
+
     restaurar librerias: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm run dev
 
 
@@ -34,3 +42,11 @@ useReducer
     initialState: estado inicial del reducer
 
 
+
+
+UUID: libreria para crear uid: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm install uuid
+como la huevada esta es typescript, requiere instalar una dependencia mas: 
+PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm i --save-dev @types/uuid
+
+
+heroicons: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm install @heroicons/react
