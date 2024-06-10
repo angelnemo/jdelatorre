@@ -8,6 +8,11 @@ instalar tailwind:
     configurar archivo: 10-calorias\src\index.css
 
 
+Clonar repositorio
+    Copiarlo en ubicacion, abrirlo 
+    restaurar librerias: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm run dev
+
+
 
 Data de archivos: 10-calorias\src\data\categories.ts
 definir types para la data: 10-calorias\src\types\index.ts y referenciar en categoris.ts
