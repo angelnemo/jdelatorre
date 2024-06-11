@@ -1,12 +1,13 @@
 import { categories } from "../data/categories"
 import {v4 as uuidv4} from "uuid"
-import { useState, ChangeEvent, FormEvent, Dispatch } from "react"
+import { useState, ChangeEvent, FormEvent, Dispatch, useEffect } from "react"
 import { Activity } from "../types"
-import { ActivityActions } from "../reducers/activity-reducer"
+import { ActivityActions, ActivityState } from "../reducers/activity-reducer"
 
 
 type FormProps = {
-    dispatch: Dispatch<ActivityActions>
+    dispatch: Dispatch<ActivityActions>,
+    state: ActivityState
 }
 
 
@@ -19,10 +20,22 @@ const initialState: Activity = {
 }
 
 
-const Form = ({dispatch}:FormProps) => {
+const Form = ({dispatch, state}:FormProps) => {
 
     /* sera un useState generico, para poder manejar la actividad fisica y tambien la comida */
     const [activity, setActivity] = useState<Activity>(initialState)
+    
+
+    useEffect(() => {
+      if (state.activeId) {
+        console.log('activateId elegido: ', state.activeId)
+        const selectedActivity = state.activities.filter(stateActivity => stateActivity.id === state.activeId)[0]
+        setActivity(selectedActivity)
+      }
+    }, [state.activeId])
+    
+
+
 
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
