@@ -4,7 +4,8 @@ import { Activity } from "../types"
 export type ActivityActions = 
     { type:'save-activity', payload: { newActivity: Activity } } |
     { type:'set-activeId', payload: { id: Activity['id'] } } |
-    { type:'delete-activity', payload: { id: Activity['id'] } } 
+    { type:'delete-activity', payload: { id: Activity['id'] } } |
+    { type:'restart-app' }
 
 
 export type ActivityState = { /* es de tipado Activity */
@@ -13,11 +14,17 @@ export type ActivityState = { /* es de tipado Activity */
 }
 
 
+/* chequear si existe algo en el local Storage */
+const localStorageActivities = ():Activity[] => {
+    const activities =  localStorage.getItem('activities')
+    return activities ? JSON.parse(activities) : [] /* si existen retorna array, de lo contrario vacio */
+}
+
 
 
 /* estado inicial */
 export const initialState:ActivityState  = {
-    activities : [],
+    activities : localStorageActivities(),
     activeId: '' /* esto es para la actividad que haya sido seleccionada para edicion o eliminacion */
 }
 
@@ -63,6 +70,15 @@ export const ativityReducer = (
         return {
             ...state,
             activities: state.activities.filter (activity => activity.id !== action.payload.id)
+        }
+    }
+
+
+
+    if (action.type === 'restart-app') {
+        return {
+            activities:[],
+            activeId:''
         }
     }
 
