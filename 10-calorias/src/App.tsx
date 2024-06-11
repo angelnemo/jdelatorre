@@ -1,6 +1,6 @@
 import Form from "./components/Form"
 
-import { useReducer } from "react"
+import { useReducer, useEffect } from "react"
 import { ativityReducer, initialState } from "./reducers/activity-reducer"
 import ActivityList from "./components/ActivityList"
 
@@ -10,6 +10,13 @@ function App() {
   const[state, dispatch] = useReducer(ativityReducer, initialState)
   /* dispatch sera la que dispare la accion deseada en el momento preciso */
   // console.log('Actividades: ', state) /* el useReduer ya permite acceder al compendio de datos obtenido */
+
+
+  /* guardar en localstorage */
+  useEffect(() => {
+    localStorage.setItem('activities', JSON.stringify(state.activities))
+  }, [state.activities])
+  
 
 
   return (

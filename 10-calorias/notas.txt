@@ -18,7 +18,12 @@ Clonar repositorio
     PS D:\Desarrollo\ReactTS\jdelatorre> git commit -m "version 1"
     PS D:\Desarrollo\ReactTS\jdelatorre> git push   (con esto se suben los cambios al servidor)
 
-    restaurar librerias: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm run dev
+
+    para jalar los cambios hechos de un pc (subidos a github)
+    PS J:\React\jdelatorre\10-calorias> git pull origin main
+
+
+    restaurar librerias: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm install
 
 
 
