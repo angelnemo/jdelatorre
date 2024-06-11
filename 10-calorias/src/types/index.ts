@@ -10,5 +10,5 @@ export type Activity = {
     name:string,
     calories:number
 }
-
+    
 
