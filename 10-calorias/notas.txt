@@ -33,8 +33,11 @@ definir types para la data: 10-calorias\src\types\index.ts y referenciar en cate
 
 crear componente: 10-calorias\src\components\Form.tsx
 iterar data de categorias en esta componente
+
+Crear un estado inicial para la actividad en Form (se parte con este valor en ese objeto)
 utilizar hook para manejar la actividad (sera de tipo objeto), 
 con este hook creado ya se puede conectar los datos con los elementos html
+es decir ya se puede registrar la actividad elegida del comboBox
 
 
 
