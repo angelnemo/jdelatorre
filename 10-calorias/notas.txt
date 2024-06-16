@@ -48,13 +48,34 @@ useReducer
     const [state, dispatch] = useReducer(reducer, initialState)
     reducer: funcion que toma el estado actual y una accion, y devuelve un nuevo estado
     initialState: estado inicial del reducer
+    Actions: funciones que manejan la logica para modificar el state
+    Payload: ifnromacion que modifica el state
+    Dispatch: Funcion que manda a llamar la accion con el payload
 
+    una vez creado el state: 10-cal\src\reducers\activity-reducer.ts
+    definir el estado inicial 
+    la estructura basica del state: activityReducer
+    la primera actividad para este ejemplo sera: save-activity
+    Dentro del reducer (activityReducer) mediante switch o if, implementar las acciones
+
+    En este ejemplo con las definiciones o acciones implementadas en el reducer
+    estas pueden ser ya enviadas al App.tsx: 
+    import { activityReducer, initialState } from "./reducers/activity-reducer"
+
+    Asi, con algun evento como handleSubmit ya podriamos enviar tanto el type como el payload
+    por lo tanto, hay que tener en cuenta que se maneja la componente en donde se tomara la 
+    accion, el payload (data), esto debe estar declarado ya en reducer y tambien para 
+    juntar todo, esto debe estar referenciado para este ejemplo en el App.tsx
 
 
 
 UUID: libreria para crear uid: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm install uuid
 como la huevada esta es typescript, requiere instalar una dependencia mas: 
 PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm i --save-dev @types/uuid
+
+
+con esto ya se puede crear el componente ActivityList.tsx
+tambien tipar esta componente
 
 
 heroicons: PS D:\Desarrollo\ReactTS\jdelatorre\10-calorias> npm install @heroicons/react

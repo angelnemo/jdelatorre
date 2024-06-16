@@ -1,7 +1,7 @@
 import { categories } from "../data/categories"
 import { Activity } from "../types"
 import {v4 as uuidv4} from "uuid"
-import { ChangeEvent, FormEvent, useState, Dispatch } from "react"
+import { ChangeEvent, FormEvent, useState, Dispatch, useEffect } from "react"
 import { ActivityActions, ActivityState } from "../reducers/activity-reducer"
 
 
@@ -15,7 +15,7 @@ const initialState: Activity = {
 }
 
 
-
+/* al tipo de Dispatch, que sea ActivityActions, para que sepa que acciones puede ejecutar  */
 type FormProps = {
     dispatch: Dispatch<ActivityActions>,
     state: ActivityState
@@ -28,10 +28,22 @@ const Form = ({dispatch, state}: FormProps) => {
 
     const [activity, setActivity] = useState<Activity>(initialState) /*estado inicial para arrancar */
 
+
+    useEffect(() => {
+      if (state.activeId) {
+        console.log('actividad elegida: ', state.activeId)
+        const selectedActivity = state.activities.filter ( stateActivity => stateActivity.id === state.activeId)[0]
+        setActivity(selectedActivity) /* actividad elegida */
+      }
+    }, [state.activeId]) /* ejecuta cuando se activa el id de un actividad */
+    
+
+
+
     /* los eventos registrados podrian ser de select o de input text */
     const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
         //console.log('actividad: ', e.target.value)
-        const isNumberField = ['category', 'calories'].includes(e.target.id)
+        const isNumberField = ['category', 'calories'].includes(e.target.id) /* identificar en que input estamos escribiendo */
         //console.log('es numero? ', isNumberField)
         setActivity({ /* si es input text guarda como texto, si es select guarda como numero */
             ...activity,
@@ -49,9 +61,22 @@ const Form = ({dispatch, state}: FormProps) => {
                 newActivity:activity
             }
         })
+
+        /* copia el estado anterior, pero le da un nuevo id para que no se repeita */
+        setActivity({
+            ...initialState,
+            id: uuidv4()
+        })/* reiniciar formulario */
     }
 
 
+
+
+    const isValidActivity = () => {
+        const {name, calories} = activity
+        return name.trim() !== '' && calories > 0
+        
+    }
 
   return (
     <form className="space-y-5 bg-white shadow p-10 rounded-lg" 
@@ -102,6 +127,7 @@ const Form = ({dispatch, state}: FormProps) => {
             className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer disabled:opacity-10"
             type="submit"
             value = {activity.category === 1 ? 'Guardar Comida' : 'Guardar Ejercicio'}
+            disabled={!isValidActivity()}
         />
 
         
